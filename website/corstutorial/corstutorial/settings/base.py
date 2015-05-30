@@ -40,7 +40,10 @@ DJANGO_APPS = (
 )
 
 THIRD_PARTY_APPS = (
-
+    'django_extensions',
+    'rest_framework',
+    'corsheaders',
+    'oauth2_provider',
 )
 
 LOCAL_APPS = (
@@ -50,6 +53,7 @@ LOCAL_APPS = (
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -81,5 +85,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (
+    join(SITE_ROOT, 'static'),
+)
+
 # Media files (User uploaded content)
 # https://docs.djangoproject.com/en/1.8/ref/settings/#media-root
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = join(SITE_ROOT, 'media')

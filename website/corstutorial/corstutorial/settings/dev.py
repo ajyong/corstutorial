@@ -19,3 +19,5 @@ DATABASES = {
         'NAME': join(SITE_ROOT, 'db.sqlite3'),
     }
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
