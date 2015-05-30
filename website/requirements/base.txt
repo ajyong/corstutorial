@@ -1,0 +1,5 @@
+Django==1.8.*
+django-cors-headers==1.1.*
+django-extensions==1.5.*
+django-oauth-toolkit==0.8.*
+djangorestframework==3.1.*
