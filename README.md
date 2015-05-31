@@ -13,16 +13,21 @@ Motivation
 Installation
 ------------
 
-###Django
-
-####Prerequisites:
+###Prerequisites:
 
 - [Python 2.7.*](https://www.python.org/downloads/)
 - [Django](https://djangoproject.com)
 - (Optional) [virtualenv](https://virtualenv.pypa.io/en/latest/)
 - (Optional) [virtualenvwrapper](https://virtualenvwrapper.readthedocs.org/en/latest/) (Mac OS X, Linux)
 - (Optional) [virtualenvwrapper-powershell](https://pypi.python.org/pypi/virtualenvwrapper-powershell) (Windows)
+- [Chrome](http://www.google.com/chrome/), for the best simulation of mobile devices
+- [Node.js v0.10.*](http://nodejs.org/dist/)
+- [Bower](http://bower.io)
+- [Gulp.js](http://gulpjs.com/)
+- [Ionic Framework](http://ionicframework.com)
 
+
+###Django
 
 1. Navigate into the `website` directory and run `pip install -r ./requirements/dev.txt` to install backend dependencies.
 1. Navigate into the `website/corstutorial` directory and run:
@@ -39,15 +44,6 @@ Installation
 1. Use your web browser to navigate to http://localhost:8000
 
 ###Ionic
-
-####Prerequisites:
-
-- [Chrome](http://www.google.com/chrome/), for the best simulation of mobile devices
-- [Node.js v0.10.*](http://nodejs.org/dist/)
-- [Bower](http://bower.io)
-- [Gulp.js](http://gulpjs.com/)
-- [Ionic Framework](http://ionicframework.com)
-
 
 1. `npm install` then `bower install`
 1. `ionic serve`
