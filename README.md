@@ -2,6 +2,7 @@ CORS Tutorial
 =============
 
 Author: Aaron Yong
+
 License: Apache 2.0
 
 Motivation
@@ -56,3 +57,15 @@ TO-DOs
 
 - Production settings for Django
 - Production settings for Ionic
+
+Built With
+----------
+
+- Django
+- Django REST Framework
+- Django CORS headers
+- Django Extensions
+- Django Material
+- Ionic Framework
+- AngularJS
+- SASS
