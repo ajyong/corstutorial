@@ -10,6 +10,12 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
+# Dev Applications
+
+INSTALLED_APPS += (
+    'debug_toolbar',
+)
+
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 

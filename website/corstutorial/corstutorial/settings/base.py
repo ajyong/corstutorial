@@ -44,13 +44,16 @@ THIRD_PARTY_APPS = (
     'rest_framework',
     'corsheaders',
     'oauth2_provider',
+    'material',
+    'material.frontend',
+    'material.admin',
 )
 
 LOCAL_APPS = (
-
+    'api',
 )
 
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = THIRD_PARTY_APPS + DJANGO_APPS + LOCAL_APPS
 
 MIDDLEWARE_CLASSES = (
     'corsheaders.middleware.CorsMiddleware',
@@ -60,11 +63,37 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'material.frontend.middleware.SmoothNavigationMiddleware',
 )
 
 ROOT_URLCONF = 'corstutorial.urls'
 
 WSGI_APPLICATION = 'corstutorial.wsgi.application'
+
+# Templates
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'DIRS': [
+            join(SITE_ROOT, 'templates'),
+        ],
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.request',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+                'material.frontend.context_processors.modules',
+            ]
+        }
+    }
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -85,9 +114,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    join(SITE_ROOT, 'static'),
-)
+STATIC_ROOT = join(SITE_ROOT, 'static')
 
 # Media files (User uploaded content)
 # https://docs.djangoproject.com/en/1.8/ref/settings/#media-root
@@ -95,3 +122,21 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = join(SITE_ROOT, 'media')
+
+# Django REST Framework
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+}
+
+# Django OAuth Toolkit
+
+OAUTH2_PROVIDER = {
+    'SCOPES': {
+        'read': 'Read scope',
+        'write': 'Write scope',
+    },
+}
