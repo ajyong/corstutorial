@@ -34,12 +34,14 @@ angular.module('corstutorial.controllers', [])
   $scope.doLogin = function() {
     console.log('Doing login', $scope.loginData);
 
-    var successHandler = function() {
-
+    var successHandler = function(obj) {
+      tokenService.set_oauth_data = obj.data;
+      $scope.closeLogin();
     };
 
-    var errorHandler = function() {
-
+    var errorHandler = function(obj) {
+      alert(obj.statusText);
+      console.error(obj.status + ': ' + obj.statusText + '\n' + JSON.stringify(obj.data));
     };
 
     authenticationService.login($scope.loginData.username, $scope.loginData.password).
