@@ -6,6 +6,11 @@
 // 'corstutorial.controllers' is found in controllers.js
 angular.module('corstutorial', ['ionic', 'corstutorial.controllers'])
 
+.constant('APIEndpoint', {
+  root: 'http://localhost:8000/api',
+  version: 1
+})
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
