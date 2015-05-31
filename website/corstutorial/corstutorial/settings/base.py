@@ -47,6 +47,7 @@ THIRD_PARTY_APPS = (
     'material',
     'material.frontend',
     'material.admin',
+    'easy_pjax',
 )
 
 LOCAL_APPS = (

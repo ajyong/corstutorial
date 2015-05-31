@@ -1,6 +1,7 @@
 angular.module('corstutorial.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', ['$scope', '$ionicModal', 'authenticationService', 'tokenService',
+    function($scope, $ionicModal, authenticationService, tokenService) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -33,13 +34,18 @@ angular.module('corstutorial.controllers', [])
   $scope.doLogin = function() {
     console.log('Doing login', $scope.loginData);
 
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
+    var successHandler = function() {
+
+    };
+
+    var errorHandler = function() {
+
+    };
+
+    authenticationService.login($scope.loginData.username, $scope.loginData.password).
+      then(successHandler, errorHandler);
   };
-})
+}])
 
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [

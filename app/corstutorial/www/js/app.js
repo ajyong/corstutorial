@@ -4,11 +4,16 @@
 // 'corstutorial' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'corstutorial.controllers' is found in controllers.js
-angular.module('corstutorial', ['ionic', 'corstutorial.controllers'])
+angular.module('corstutorial', ['ionic', 'ngCookies', 'corstutorial.controllers', 'corstutorial.services'])
 
 .constant('APIEndpoint', {
   root: 'http://localhost:8000/api',
   version: 1
+})
+
+.constant('ClientID', {
+  raw: 'dn6e9eTrg3zXIIkQoNn7jVREu0srJ7rVwIyIQq0j',
+  base64: 'ZG42ZTllVHJnM3pYSUlrUW9ObjdqVlJFdTBzcko3clZ3SXlJUXEwajo='
 })
 
 .run(function($ionicPlatform) {
@@ -25,7 +30,7 @@ angular.module('corstutorial', ['ionic', 'corstutorial.controllers'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $stateProvider
 
   .state('app', {
@@ -73,4 +78,26 @@ angular.module('corstutorial', ['ionic', 'corstutorial.controllers'])
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/playlists');
+
+
+  // Configuring CSRF to match server's implementation
+  $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+  $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+
+  // Add token to request if available, redirect to login if access is denied.
+  $httpProvider.interceptors.push(['$q', '$location', 'tokenService', function($q, $location, tokenService) {
+    return {
+      'request': function(config) {
+        config.headers = config.headers || {};
+        var token_type = tokenService.get_token_type();
+        var token = tokenService.get_access_token();
+
+        if (token) {
+          config.headers.Authorization = token_type + ' ' + token;
+        }
+
+        return config;
+      }
+    };
+  }]);
 });
