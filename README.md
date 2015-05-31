@@ -53,6 +53,7 @@ TO-DOs
 
 - Production settings for Django
 - Production settings for Ionic
+- Proper step-by-step tutorial
 
 Built With
 ----------
