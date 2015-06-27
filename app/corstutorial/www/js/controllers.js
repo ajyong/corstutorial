@@ -35,7 +35,7 @@ angular.module('corstutorial.controllers', [])
     console.log('Doing login', $scope.loginData);
 
     var successHandler = function(obj) {
-      tokenService.set_oauth_data = obj.data;
+      tokenService.set_oauth_data(obj.data);
       $scope.closeLogin();
     };
 
