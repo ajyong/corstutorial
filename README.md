@@ -1,3 +1,7 @@
+# WARNING
+
+This has been archived because it contains (CVE-2022-36359)[https://nvd.nist.gov/vuln/detail/CVE-2022-36359] and I've not upgraded this repo at all. Please use it for whatever educational purposes it may serve, but **do not run this in Production** nor think it's the latest guidance.
+
 CORS Tutorial
 =============
 
